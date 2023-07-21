@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum CustomError: Error {
-    case wtfError
+enum FakeFetchError: String, Error {
+    case dataNotNil = "Data is not nil."
 }
 
 enum Kind: String {
@@ -56,7 +56,7 @@ enum PossibleKind: RawRepresentable {
 struct Properties {
     let ogcFind: Int
     let obrId1: URL
-    let druh: Kind
+    let druh: PossibleKind
     let nazev: String
 }
 
@@ -75,20 +75,21 @@ struct Features {
 }
 
 class DataService {
-    static var shared: DataService = .init()
+    static let shared: DataService = .init()
 
     private init() {}
 
     var data: Result<Features, Error>?
 
-    func fetchData(closure: @escaping (Result<Features, Error>) -> Void) throws {
+    func fetchData(completion: @escaping (Result<Features, Error>) -> Void) throws {
+        guard self.data == nil else {
+            completion(Result.failure(FakeFetchError.dataNotNil))
+            return
+        }
+
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
-            if let data = self.data {
-                closure(data)
-                return
-            } else {
-                closure(Result.failure(CustomError.wtfError))
-            }
+            self.data = Result.success(DataService.mockData)
+            completion(Result.success(DataService.mockData))
         }
     }
 }
