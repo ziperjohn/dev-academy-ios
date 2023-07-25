@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum FakeFetchError: String, Error {
-    case dataNotNil = "Data is not nil."
-}
-
 enum Kind: String {
     case divadlo = "Divadlo"
     case galerie = "Galerie"
@@ -81,15 +77,16 @@ class DataService {
 
     var data: Result<Features, Error>?
 
-    func fetchData(completion: @escaping (Result<Features, Error>) -> Void) throws {
-        guard self.data == nil else {
-            completion(Result.failure(FakeFetchError.dataNotNil))
+    func fetchData(completion: @escaping (Result<Features, Error>) -> Void) {
+        if let data = data {
+            completion(data)
             return
         }
 
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
-            self.data = Result.success(DataService.mockData)
-            completion(Result.success(DataService.mockData))
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [weak self] _ in
+            let newData = Result<Features, Error>.success(DataService.mockData)
+            self?.data = newData
+            completion(newData)
         }
     }
 }
