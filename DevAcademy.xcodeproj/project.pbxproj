@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E1764292A66C7440054CC3A /* SwiftBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1764282A66C7440054CC3A /* SwiftBasic.swift */; };
+		1EA891E82A7000CB00775195 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891E72A7000CB00775195 /* DataService.swift */; };
+		1EA891EB2A70023300775195 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EA2A70023300775195 /* Properties.swift */; };
+		1EA891ED2A70024900775195 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EC2A70024900775195 /* Kind.swift */; };
+		1EA891EF2A70025F00775195 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EE2A70025F00775195 /* Point.swift */; };
+		1EA891F12A70028100775195 /* PossibleKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891F02A70028100775195 /* PossibleKind.swift */; };
+		1EA891F52A70035300775195 /* PlacesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891F42A70035300775195 /* PlacesScene.swift */; };
+		1EA891F72A7004DD00775195 /* PlacesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891F62A7004DD00775195 /* PlacesRow.swift */; };
+		1EA891F92A7013AF00775195 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891F82A7013AF00775195 /* Features.swift */; };
+		1EA891FB2A7013FD00775195 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891FA2A7013FD00775195 /* Feature.swift */; };
 		C05610492A5C78CA007FB970 /* DevAcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05610482A5C78CA007FB970 /* DevAcademyApp.swift */; };
 		C056104B2A5C78CA007FB970 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C056104A2A5C78CA007FB970 /* ContentView.swift */; };
 		C056104D2A5C78CB007FB970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C056104C2A5C78CB007FB970 /* Assets.xcassets */; };
@@ -15,7 +23,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E1764282A66C7440054CC3A /* SwiftBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBasic.swift; sourceTree = "<group>"; };
+		1EA891E72A7000CB00775195 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		1EA891EA2A70023300775195 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		1EA891EC2A70024900775195 /* Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
+		1EA891EE2A70025F00775195 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		1EA891F02A70028100775195 /* PossibleKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PossibleKind.swift; sourceTree = "<group>"; };
+		1EA891F42A70035300775195 /* PlacesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesScene.swift; sourceTree = "<group>"; };
+		1EA891F62A7004DD00775195 /* PlacesRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesRow.swift; sourceTree = "<group>"; };
+		1EA891F82A7013AF00775195 /* Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
+		1EA891FA2A7013FD00775195 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
 		C05610452A5C78CA007FB970 /* DevAcademy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevAcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C05610482A5C78CA007FB970 /* DevAcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAcademyApp.swift; sourceTree = "<group>"; };
 		C056104A2A5C78CA007FB970 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +50,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EA891E42A6FFFDE00775195 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				1EA891F22A7002BC00775195 /* Places */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		1EA891E52A6FFFF800775195 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1EA891EA2A70023300775195 /* Properties.swift */,
+				1EA891EC2A70024900775195 /* Kind.swift */,
+				1EA891EE2A70025F00775195 /* Point.swift */,
+				1EA891F02A70028100775195 /* PossibleKind.swift */,
+				1EA891F82A7013AF00775195 /* Features.swift */,
+				1EA891FA2A7013FD00775195 /* Feature.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1EA891E62A70000900775195 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1EA891E72A7000CB00775195 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1EA891F22A7002BC00775195 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				1EA891F42A70035300775195 /* PlacesScene.swift */,
+				1EA891F62A7004DD00775195 /* PlacesRow.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
 		C056103C2A5C78CA007FB970 = {
 			isa = PBXGroup;
 			children = (
@@ -55,9 +109,11 @@
 			children = (
 				C05610482A5C78CA007FB970 /* DevAcademyApp.swift */,
 				C056104A2A5C78CA007FB970 /* ContentView.swift */,
+				1EA891E62A70000900775195 /* Services */,
+				1EA891E52A6FFFF800775195 /* Models */,
+				1EA891E42A6FFFDE00775195 /* Scenes */,
 				C056104C2A5C78CB007FB970 /* Assets.xcassets */,
 				C056104E2A5C78CB007FB970 /* Preview Content */,
-				1E1764282A66C7440054CC3A /* SwiftBasic.swift */,
 			);
 			path = DevAcademy;
 			sourceTree = "<group>";
@@ -140,9 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E1764292A66C7440054CC3A /* SwiftBasic.swift in Sources */,
+				1EA891FB2A7013FD00775195 /* Feature.swift in Sources */,
+				1EA891F72A7004DD00775195 /* PlacesRow.swift in Sources */,
 				C056104B2A5C78CA007FB970 /* ContentView.swift in Sources */,
 				C05610492A5C78CA007FB970 /* DevAcademyApp.swift in Sources */,
+				1EA891EB2A70023300775195 /* Properties.swift in Sources */,
+				1EA891F52A70035300775195 /* PlacesScene.swift in Sources */,
+				1EA891F12A70028100775195 /* PossibleKind.swift in Sources */,
+				1EA891EF2A70025F00775195 /* Point.swift in Sources */,
+				1EA891E82A7000CB00775195 /* DataService.swift in Sources */,
+				1EA891ED2A70024900775195 /* Kind.swift in Sources */,
+				1EA891F92A7013AF00775195 /* Features.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
