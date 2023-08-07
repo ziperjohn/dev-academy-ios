@@ -23,15 +23,7 @@ struct PlacesRow: View {
                 ProgressView()
             }
 
-            VStack(alignment: .leading) {
-                Text(feature.properties.nazev)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .lineLimit(1)
-                Text(feature.properties.druh.rawValue)
-                    .foregroundColor(.secondary)
-                    .font(.subheadline)
-            }
+            PlaceTitleSubtitleDistance(title: feature.properties.nazev, subtitle: feature.properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
         }
     }
 }
