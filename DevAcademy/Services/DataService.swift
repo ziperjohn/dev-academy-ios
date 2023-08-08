@@ -12,16 +12,16 @@ class DataService {
 
     private init() {}
 
-    var data: Result<Features, Error>?
+    var data: Result<Places, Error>?
 
-    func fetchData(completion: @escaping (Result<Features, Error>) -> Void) {
+    func fetchData(completion: @escaping (Result<Places, Error>) -> Void) {
         if let data = data {
             completion(data)
             return
         }
 
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [weak self] _ in
-            let newData = Result<Features, Error>.success(Features.mock)
+            let newData = Result<Places, Error>.success(Places.mock)
             self?.data = newData
             completion(newData)
         }
