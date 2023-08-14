@@ -9,19 +9,19 @@ import ActivityIndicatorView
 import SwiftUI
 
 struct PlacesScene: View {
-    @EnvironmentObject private var coordinator: Coordinator
-
-    let state = PlacesStateView()
+    @State var features: [Feature] = []
+    @State var showFavorites = false
 
     var body: some View {
         NavigationStack {
             Group {
-                if state.arePlacesLoaded {
-                    List(state.places, id: \.properties.ogcFid) { place in
-                        NavigationLink(destination: coordinator.placeDetailScene(with: place)) {
-                            PlacesRow(place: place)
+                if !features.isEmpty {
+                    List(features, id: \.properties.ogcFid) { feature in
+                        NavigationLink(destination: PlaceDetail(feature: feature)) {
+                            PlacesRow(feature: feature)
                         }
                     }
+                    .animation(.default, value: features)
                     .listStyle(.plain)
                 } else {
                     ActivityIndicatorView(isVisible: .constant(true), type: .growingCircle)
@@ -33,15 +33,28 @@ struct PlacesScene: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button {
-                    state.toggleShowFavorite()
+                    showFavorites.toggle()
                 } label: {
                     Image(systemName: "heart.fill").font(.headline)
                 }
             }
         }
-        .onAppear(perform: state.fetch)
-        .sheet(isPresented: state.$showFavorites) {
-            coordinator.favoritesScene
+        .onAppear(perform: fetch)
+        .sheet(isPresented: $showFavorites) {
+            Text("Nic tu není")
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        }
+    }
+
+    func fetch() {
+        DataService.shared.fetchData { result in
+            switch result {
+            case .success(let features):
+                self.features = features.features
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }
@@ -49,7 +62,5 @@ struct PlacesScene: View {
 struct PlacesScene_Previews: PreviewProvider {
     static var previews: some View {
         PlacesScene()
-            .environmentObject(PlacesObservableObject())
-            .environmentObject(Coordinator())
     }
 }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Places {
-    let features: [Place]
+struct Features {
+    let features: [Feature]
 }
 
-extension Places {
-    static let mock: Places = .init(
+extension Features {
+    static let mock: Features = .init(
         features: [
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1913, longitude: 16.6115),
                 properties: Properties(
                     ogcFid: 1,
@@ -23,7 +23,7 @@ extension Places {
                     nazev: "Národní divadlo Brno"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.2006, longitude: 16.6097),
                 properties: Properties(
                     ogcFid: 2,
@@ -32,7 +32,7 @@ extension Places {
                     nazev: "Kino Art Brno"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.2019, longitude: 16.6151),
                 properties: Properties(
                     ogcFid: 3,
@@ -41,7 +41,7 @@ extension Places {
                     nazev: "Moravské zemské muzeum"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.2079, longitude: 16.5938),
                 properties: Properties(
                     ogcFid: 4,
@@ -50,7 +50,7 @@ extension Places {
                     nazev: "BOUFOU Prostějovská Brno"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.2072, longitude: 16.6061),
                 properties: Properties(
                     ogcFid: 5,
@@ -59,7 +59,7 @@ extension Places {
                     nazev: "Kabinet múz"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1894, longitude: 165602),
                 properties: Properties(
                     ogcFid: 6,
@@ -68,7 +68,7 @@ extension Places {
                     nazev: "Moravská zemská knihovna"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1914, longitude: 16.6126),
                 properties: Properties(
                     ogcFid: 7,
@@ -77,7 +77,7 @@ extension Places {
                     nazev: "Janáčkovo divadlo"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.2182, longitude: 16.5893),
                 properties: Properties(
                     ogcFid: 8,
@@ -86,7 +86,7 @@ extension Places {
                     nazev: "Špilberk Brno"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1920, longitude: 16.6071),
                 properties: Properties(
                     ogcFid: 9,
@@ -95,7 +95,7 @@ extension Places {
                     nazev: "Letní kino Lužánky"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 10,
@@ -104,7 +104,7 @@ extension Places {
                     nazev: "Bar, který neexistuje"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 11,
@@ -113,7 +113,7 @@ extension Places {
                     nazev: "Cinema City"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 12,
@@ -122,7 +122,7 @@ extension Places {
                     nazev: "Univerzitní kino Scala"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 13,
@@ -131,7 +131,7 @@ extension Places {
                     nazev: "Impact Hub"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 14,
@@ -140,7 +140,7 @@ extension Places {
                     nazev: "Villa Tugendhat"
                 )
             ),
-            Place(
+            Feature(
                 geometry: Point(latitude: 49.1925, longitude: 16.6112),
                 properties: Properties(
                     ogcFid: 15,
