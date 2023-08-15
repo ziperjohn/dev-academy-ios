@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct PlaceDetail: View {
-    let feature: Feature
-
+struct PlaceDetailScene: View {
     @Environment(\.dismiss) var dismiss
+    let state: PlaceDetailViewState
 
     var body: some View {
         ZStack {
-            VStack {
-                AsyncImage(url: feature.properties.obrId1) { image in
+            VStack(alignment: .leading) {
+                AsyncImage(url: state.placeImageUrl) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -28,13 +27,21 @@ struct PlaceDetail: View {
                                    startPoint: .top,
                                    endPoint: .bottom).cornerRadius(20)
                 }.overlay(alignment: .bottomLeading) {
-                    PlaceTitleSubtitleDistance(title: feature.properties.nazev, subtitle: feature.properties.druh.rawValue, titleColor: .white, subtitleColor: .white, coordinate: feature.geometry)
+                    PlaceTitleSubtitleDistance(title: state.placeTitle, subtitle: state.placeType, titleColor: .white, subtitleColor: .white, coordinate: state.placeCoordinate)
                         .padding()
                 }
 
-                Spacer()
+                Text("Location")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
 
-                Text("Další obsah")
+                MapView(coordinate: state.placeCoordinate)
+                    .frame(height: 300)
+                    .cornerRadius(20)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1))
+                    .padding(.horizontal)
 
                 Spacer()
             }
@@ -60,6 +67,6 @@ struct PlaceDetail: View {
 
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetail(feature: Features.mock.features[0])
+        PlaceDetailScene(state: PlaceDetailViewState(place: Places.mock.features[0]))
     }
 }

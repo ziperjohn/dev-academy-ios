@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PlacesRow: View {
-    let feature: Feature
+    let place: Place
 
     var body: some View {
         HStack {
-            AsyncImage(url: feature.properties.obrId1) { image in
+            AsyncImage(url: place.properties.obrId1) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -23,13 +23,13 @@ struct PlacesRow: View {
                 ProgressView()
             }
 
-            PlaceTitleSubtitleDistance(title: feature.properties.nazev, subtitle: feature.properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
+            PlaceTitleSubtitleDistance(title: place.properties.nazev, subtitle: place.properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
         }
     }
 }
 
 struct PlacesRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesRow(feature: Features.mock.features[0])
+        PlacesRow(place: Places.mock.features[0])
     }
 }

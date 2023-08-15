@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Feature: Equatable {
+struct Place: Equatable {
     let geometry: Point
     let properties: Properties
 
-    static func == (lhs: Feature, rhs: Feature) -> Bool {
+    static func == (lhs: Place, rhs: Place) -> Bool {
         lhs.properties.ogcFid == rhs.properties.ogcFid
     }
 }
