@@ -5,34 +5,46 @@
 //  Created by Jan Vaverka on 25.07.2023.
 //
 
+import ActivityIndicatorView
 import SwiftUI
 
 struct PlacesScene: View {
     @State var features: [Feature] = []
+    @State var showFavorites = false
 
     var body: some View {
         NavigationStack {
             Group {
                 if !features.isEmpty {
                     List(features, id: \.properties.ogcFid) { feature in
-                        PlacesRow(feature: feature)
-                            .onTapGesture {
-                                onFeatureTapped(feature: feature)
-                            }
+                        NavigationLink(destination: PlaceDetail(feature: feature)) {
+                            PlacesRow(feature: feature)
+                        }
                     }
                     .animation(.default, value: features)
                     .listStyle(.plain)
                 } else {
-                    ProgressView()
+                    ActivityIndicatorView(isVisible: .constant(true), type: .growingCircle)
+                        .foregroundColor(.blue)
+                        .frame(width: 150, height: 150)
                 }
             }
-            .navigationTitle("Kultůrmapa")
+            .navigationTitle("Kultůrní mapa Brna")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button {
+                    showFavorites.toggle()
+                } label: {
+                    Image(systemName: "heart.fill").font(.headline)
+                }
+            }
         }
         .onAppear(perform: fetch)
-    }
-
-    func onFeatureTapped(feature: Feature) {
-        features.removeAll(where: { $0.properties.ogcFid == feature.properties.ogcFid })
+        .sheet(isPresented: $showFavorites) {
+            Text("Nic tu není")
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
+        }
     }
 
     func fetch() {
