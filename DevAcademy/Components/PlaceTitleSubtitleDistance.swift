@@ -5,6 +5,7 @@
 //  Created by Jan Vaverka on 07.08.2023.
 //
 
+import MapKit
 import SwiftUI
 
 struct PlaceTitleSubtitleDistance: View {
@@ -12,7 +13,7 @@ struct PlaceTitleSubtitleDistance: View {
     let subtitle: String
     let titleColor: Color
     let subtitleColor: Color
-    let coordinate: Point?
+    let coordinate: CLLocationCoordinate2D?
 
     // TODO: Calculate distance from coordinate
 
@@ -43,6 +44,6 @@ struct PlaceTitleSubtitleDistance: View {
 
 struct PlaceTitleSubtitleDistance_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceTitleSubtitleDistance(title: Features.mock.features[0].properties.nazev, subtitle: Features.mock.features[0].properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: Features.mock.features[0].geometry)
+        PlaceTitleSubtitleDistance(title: Places.mock.features[0].properties.nazev, subtitle: Places.mock.features[0].properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: CLLocationCoordinate2D())
     }
 }
