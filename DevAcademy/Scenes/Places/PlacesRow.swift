@@ -12,7 +12,7 @@ struct PlacesRow: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: place.properties.obrId1) { image in
+            AsyncImage(url: place.properties.image) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -23,7 +23,7 @@ struct PlacesRow: View {
                 ProgressView()
             }
 
-            PlaceTitleSubtitleDistance(title: place.properties.nazev, subtitle: place.properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
+            PlaceTitleSubtitleDistance(title: place.properties.name, subtitle: place.properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
         }
     }
 }

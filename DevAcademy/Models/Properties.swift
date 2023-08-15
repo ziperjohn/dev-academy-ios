@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Properties {
+struct Properties: Decodable {
     let ogcFid: Int
-    let obrId1: URL
-    let druh: PossibleKind
-    let nazev: String
+    let image: URL
+    let kind: PossibleKind
+    let name: String
 }

@@ -16,15 +16,15 @@ struct PlaceDetailViewState: DynamicProperty {
     }
 
     var placeTitle: String {
-        place.properties.nazev
+        place.properties.name
     }
 
     var placeType: String {
-        place.properties.druh.rawValue
+        place.properties.kind.rawValue
     }
 
     var placeImageUrl: URL {
-        place.properties.obrId1
+        place.properties.image
     }
 
     var placeCoordinate: CLLocationCoordinate2D {
