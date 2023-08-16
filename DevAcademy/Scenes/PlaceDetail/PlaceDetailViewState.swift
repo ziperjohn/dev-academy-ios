@@ -23,11 +23,15 @@ struct PlaceDetailViewState: DynamicProperty {
         place.properties.kind.rawValue
     }
 
-    var placeImageUrl: URL {
-        place.properties.image
+    var placeImageUrl: URL? {
+        guard let image = place.properties.image, let url = URL(string: image) else {
+            return nil
+        }
+
+        return url
     }
 
     var placeCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: place.geometry.latitude, longitude: place.geometry.longitude)
+        CLLocationCoordinate2D(latitude: place.geometry?.latitude ?? 0, longitude: place.geometry?.longitude ?? 0)
     }
 }

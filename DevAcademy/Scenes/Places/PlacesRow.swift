@@ -12,7 +12,7 @@ struct PlacesRow: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: place.properties.image) { image in
+            AsyncImage(url: place.properties.imageUrl) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -30,6 +30,6 @@ struct PlacesRow: View {
 
 struct PlacesRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesRow(place: Places.mock.features[0])
+        PlacesRow(place: Places.mock.places[0])
     }
 }

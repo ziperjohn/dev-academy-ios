@@ -39,7 +39,9 @@ struct PlacesScene: View {
                 }
             }
         }
-        .onAppear(perform: state.fetch)
+        .task {
+            await state.fetch()
+        }
         .sheet(isPresented: state.$showFavorites) {
             coordinator.favoritesScene
         }
@@ -49,7 +51,7 @@ struct PlacesScene: View {
 struct PlacesScene_Previews: PreviewProvider {
     static var previews: some View {
         PlacesScene()
-            .environmentObject(PlacesObservableObject())
+            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService()))
             .environmentObject(Coordinator())
     }
 }
