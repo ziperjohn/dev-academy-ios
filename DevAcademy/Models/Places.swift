@@ -24,7 +24,12 @@ extension Places {
                     ogcFid: 1,
                     image: "https://picsum.photos/200",
                     kind: .kind(.divadlo),
-                    name: "Národní divadlo Brno"
+                    name: "Národní divadlo Brno",
+                    street: "Rooseveltova",
+                    identificationNumber: "31",
+                    phone: nil,
+                    email: "info@email.com",
+                    web: "https://www.ndbrno.cz/"
                 )
             ),
             Place(
@@ -33,7 +38,12 @@ extension Places {
                     ogcFid: 2,
                     image: "https://picsum.photos/200",
                     kind: .kind(.kino),
-                    name: "Kino Art Brno"
+                    name: "Kino Art Brno",
+                    street: "Cihlářská",
+                    identificationNumber: "643/19",
+                    phone: "777 335 325",
+                    email: "info@email.com",
+                    web: "https://www.kinoart.cz/cs/program"
                 )
             ),
             Place(
@@ -42,16 +52,12 @@ extension Places {
                     ogcFid: 3,
                     image: "https://picsum.photos/200",
                     kind: .kind(.muzeum),
-                    name: "Moravské zemské muzeum"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.2079, longitude: 16.5938),
-                properties: Properties(
-                    ogcFid: 4,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.kulturniCentrum),
-                    name: "BOUFOU Prostějovská Brno"
+                    name: "Moravské zemské muzeum",
+                    street: "Zelný trh",
+                    identificationNumber: "6",
+                    phone: "777 335 325",
+                    email: "info@email.com",
+                    web: "http://www.mzm.cz/"
                 )
             ),
             Place(
@@ -60,97 +66,12 @@ extension Places {
                     ogcFid: 5,
                     image: "https://picsum.photos/200",
                     kind: .kind(.hudebniKlub),
-                    name: "Kabinet múz"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1894, longitude: 165602),
-                properties: Properties(
-                    ogcFid: 6,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.knihovna),
-                    name: "Moravská zemská knihovna"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1914, longitude: 16.6126),
-                properties: Properties(
-                    ogcFid: 7,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.koncertniHala),
-                    name: "Janáčkovo divadlo"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.2182, longitude: 16.5893),
-                properties: Properties(
-                    ogcFid: 8,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.kulturniPamátka),
-                    name: "Špilberk Brno"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1920, longitude: 16.6071),
-                properties: Properties(
-                    ogcFid: 9,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.letniKino),
-                    name: "Letní kino Lužánky"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 10,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.podnikSLulturnimProgramem),
-                    name: "Bar, který neexistuje"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 11,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.kino),
-                    name: "Cinema City"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 12,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.kino),
-                    name: "Univerzitní kino Scala"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 13,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.hub),
-                    name: "Impact Hub"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 14,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.kulturniPamátka),
-                    name: "Villa Tugendhat"
-                )
-            ),
-            Place(
-                geometry: Point(latitude: 49.1925, longitude: 16.6112),
-                properties: Properties(
-                    ogcFid: 15,
-                    image: "https://picsum.photos/200",
-                    kind: .kind(.vystaviste),
-                    name: "Brněnské výstaviště"
+                    name: "Kabinet múz",
+                    street: "Sukova",
+                    identificationNumber: "49/4",
+                    phone: "777 335 325",
+                    email: "info@email.com",
+                    web: "https://www.kabinetmuz.cz/"
                 )
             )
         ]

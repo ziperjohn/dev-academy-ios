@@ -20,7 +20,11 @@ struct PlacesRow: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(radius: 4)
             } placeholder: {
-                ProgressView()
+                Image("placeholder")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .shadow(radius: 4)
             }
 
             PlaceTitleSubtitleDistance(title: place.properties.name, subtitle: place.properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)

@@ -23,6 +23,38 @@ struct PlaceDetailViewState: DynamicProperty {
         place.properties.kind.rawValue
     }
 
+    var placeAddress: String {
+        guard let street = place.properties.street, let identificationNumber = place.properties.identificationNumber else {
+            return ""
+        }
+
+        return "\(street) \(identificationNumber)"
+    }
+
+    var placeEmail: String? {
+        guard let email = place.properties.email else {
+            return nil
+        }
+
+        return "mailto:\(email)"
+    }
+
+    var placePhone: String? {
+        guard let phone = place.properties.phone else {
+            return nil
+        }
+
+        return "tel://:\(phone)"
+    }
+
+    var placeWeb: String? {
+        guard let web = place.properties.web else {
+            return nil
+        }
+
+        return web
+    }
+
     var placeImageUrl: URL? {
         guard let image = place.properties.image, let url = URL(string: image) else {
             return nil
