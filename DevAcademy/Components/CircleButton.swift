@@ -9,13 +9,12 @@ import SwiftUI
 
 struct CircleButton: View {
     let icon: String
-    let url: String
+    let url: URL
 
     var body: some View {
         Button {
-            if let url = URL(string: url) {
-                UIApplication.shared.open(url)
-            }
+            UIApplication.shared.open(url)
+
         } label: {
             Image(systemName: icon).font(.title)
         }
@@ -28,6 +27,6 @@ struct CircleButton: View {
 
 struct CircleButton_Previews: PreviewProvider {
     static var previews: some View {
-        CircleButton(icon: "globe", url: "www.seznam.cz")
+        CircleButton(icon: "globe", url: URL(string: "https://filharmonie-brno.cz/")!)
     }
 }

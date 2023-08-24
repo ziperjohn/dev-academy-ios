@@ -36,23 +36,25 @@ struct PlaceDetailScene: View {
             }
 
             HStack(spacing: 40) {
-                if state.placeWeb != nil {
-                    CircleButton(icon: "globe", url: state.placeWeb!)
+                if let webUrl = state.webUrl {
+                    CircleButton(icon: "globe", url: webUrl)
                 }
 
-                if state.placeEmail != nil {
-                    CircleButton(icon: "envelope", url: state.placeEmail!)
+                if let emailScheme = state.emailScheme {
+                    CircleButton(icon: "envelope", url: emailScheme)
                 }
 
-                if state.placePhone != nil {
-                    CircleButton(icon: "phone", url: state.placePhone!)
+                if let phoneScheme = state.phoneScheme {
+                    CircleButton(icon: "phone", url: phoneScheme)
                 }
             }
 
-            MapView(coordinate: state.placeCoordinate)
-                .frame(height: 250)
-                .cornerRadius(20)
-                .padding(.horizontal)
+            if let coordinate = state.placeCoordinate {
+                MapView(coordinate: coordinate)
+                    .frame(height: 250)
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+            }
 
             Spacer()
         }

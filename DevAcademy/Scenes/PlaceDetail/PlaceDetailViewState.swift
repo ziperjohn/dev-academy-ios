@@ -31,28 +31,32 @@ struct PlaceDetailViewState: DynamicProperty {
         return "\(street) \(identificationNumber)"
     }
 
-    var placeEmail: String? {
+    var emailScheme: URL? {
         guard let email = place.properties.email else {
             return nil
         }
 
-        return "mailto:\(email)"
+        return URL(string: "mailto:\(email)")
     }
 
-    var placePhone: String? {
+    var phoneScheme: URL? {
         guard let phone = place.properties.phone else {
             return nil
         }
 
-        return "tel://:\(phone)"
+        return URL(string: "tel://\(phone)")
     }
 
-    var placeWeb: String? {
-        guard let web = place.properties.web else {
+    var webUrl: URL? {
+        guard let webUrl = place.properties.web else {
             return nil
         }
 
-        return web
+        if webUrl.hasPrefix("https://") || webUrl.hasPrefix("http://") {
+            return URL(string: webUrl)
+        } else {
+            return URL(string: "http://\(webUrl)")
+        }
     }
 
     var placeImageUrl: URL? {
@@ -63,7 +67,11 @@ struct PlaceDetailViewState: DynamicProperty {
         return url
     }
 
-    var placeCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: place.geometry?.latitude ?? 0, longitude: place.geometry?.longitude ?? 0)
+    var placeCoordinate: CLLocationCoordinate2D? {
+        guard let latitude = place.geometry?.latitude, let longitude = place.geometry?.longitude else {
+            return nil
+        }
+
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
