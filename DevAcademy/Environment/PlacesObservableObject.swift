@@ -8,18 +8,21 @@
 import Foundation
 
 class PlacesObservableObject: ObservableObject {
-    @Published var place: [Place] = []
+    @Published var places: [Place] = []
 
-    private let dataService: DataService = .shared
+    private let placesService: PlacesService
 
-    func fetchPlaces() {
-        dataService.fetchData { result in
-            switch result {
-            case .success(let places):
-                self.place = places.features
-            case .failure(let error):
-                print(error)
-            }
+    init(placesService: PlacesService) {
+        self.placesService = placesService
+    }
+
+    @MainActor
+    func fetchPlaces() async {
+        do {
+            let placesResult = try await placesService.places()
+            self.places = placesResult.places
+        } catch {
+            print(error)
         }
     }
 }

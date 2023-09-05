@@ -16,18 +16,62 @@ struct PlaceDetailViewState: DynamicProperty {
     }
 
     var placeTitle: String {
-        place.properties.nazev
+        place.properties.name
     }
 
     var placeType: String {
-        place.properties.druh.rawValue
+        place.properties.kind.rawValue
     }
 
-    var placeImageUrl: URL {
-        place.properties.obrId1
+    var placeAddress: String {
+        guard let street = place.properties.street, let identificationNumber = place.properties.identificationNumber else {
+            return ""
+        }
+
+        return "\(street) \(identificationNumber)"
     }
 
-    var placeCoordinate: CLLocationCoordinate2D {
-        CLLocationCoordinate2D(latitude: place.geometry.latitude, longitude: place.geometry.longitude)
+    var emailScheme: URL? {
+        guard let email = place.properties.email else {
+            return nil
+        }
+
+        return URL(string: "mailto:\(email)")
+    }
+
+    var phoneScheme: URL? {
+        guard let phone = place.properties.phone else {
+            return nil
+        }
+
+        return URL(string: "tel://\(phone)")
+    }
+
+    var webUrl: URL? {
+        guard let webUrl = place.properties.web else {
+            return nil
+        }
+
+        if webUrl.hasPrefix("https://") || webUrl.hasPrefix("http://") {
+            return URL(string: webUrl)
+        } else {
+            return URL(string: "http://\(webUrl)")
+        }
+    }
+
+    var placeImageUrl: URL? {
+        guard let image = place.properties.image, let url = URL(string: image) else {
+            return nil
+        }
+
+        return url
+    }
+
+    var placeCoordinate: CLLocationCoordinate2D? {
+        guard let latitude = place.geometry?.latitude, let longitude = place.geometry?.longitude else {
+            return nil
+        }
+
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }

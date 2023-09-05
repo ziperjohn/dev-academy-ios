@@ -44,6 +44,6 @@ struct PlaceTitleSubtitleDistance: View {
 
 struct PlaceTitleSubtitleDistance_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceTitleSubtitleDistance(title: Places.mock.features[0].properties.nazev, subtitle: Places.mock.features[0].properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: CLLocationCoordinate2D())
+        PlaceTitleSubtitleDistance(title: Places.mock.places[0].properties.name, subtitle: Places.mock.places[0].properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: CLLocationCoordinate2D())
     }
 }

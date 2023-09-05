@@ -16,14 +16,14 @@ struct PlacesStateView: DynamicProperty {
     }
 
     var places: [Place] {
-        placesObject.place
+        placesObject.places
     }
 
     var arePlacesLoaded: Bool {
         !places.isEmpty
     }
 
-    func fetch() {
-        placesObject.fetchPlaces()
+    func fetch() async {
+        await placesObject.fetchPlaces()
     }
 }

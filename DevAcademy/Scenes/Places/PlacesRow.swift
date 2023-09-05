@@ -12,7 +12,7 @@ struct PlacesRow: View {
 
     var body: some View {
         HStack {
-            AsyncImage(url: place.properties.obrId1) { image in
+            AsyncImage(url: place.properties.imageUrl) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -20,16 +20,20 @@ struct PlacesRow: View {
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(radius: 4)
             } placeholder: {
-                ProgressView()
+                Image("placeholder")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .shadow(radius: 4)
             }
 
-            PlaceTitleSubtitleDistance(title: place.properties.nazev, subtitle: place.properties.druh.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
+            PlaceTitleSubtitleDistance(title: place.properties.name, subtitle: place.properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: nil)
         }
     }
 }
 
 struct PlacesRow_Previews: PreviewProvider {
     static var previews: some View {
-        PlacesRow(place: Places.mock.features[0])
+        PlacesRow(place: Places.mock.places[0])
     }
 }

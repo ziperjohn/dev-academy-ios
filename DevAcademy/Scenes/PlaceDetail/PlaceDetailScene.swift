@@ -12,39 +12,51 @@ struct PlaceDetailScene: View {
     let state: PlaceDetailViewState
 
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading) {
-                AsyncImage(url: state.placeImageUrl) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 350)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                } placeholder: {
-                    ProgressView()
-                }.overlay {
-                    LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0), Color.black.opacity(0.85)]),
-                                   startPoint: .top,
-                                   endPoint: .bottom).cornerRadius(20)
-                }.overlay(alignment: .bottomLeading) {
-                    PlaceTitleSubtitleDistance(title: state.placeTitle, subtitle: state.placeType, titleColor: .white, subtitleColor: .white, coordinate: state.placeCoordinate)
-                        .padding()
+        VStack(alignment: .center, spacing: 20) {
+            AsyncImage(url: state.placeImageUrl) { image in
+                image
+                    .resizable()
+                    .frame(height: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(radius: 4)
+            } placeholder: {
+                Image("placeholder")
+                    .resizable()
+                    .frame(height: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(radius: 4)
+
+            }.overlay {
+                LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0), Color.black.opacity(0.85)]),
+                               startPoint: .top,
+                               endPoint: .bottom).cornerRadius(20)
+            }.overlay(alignment: .bottomLeading) {
+                PlaceTitleSubtitleDistance(title: state.placeTitle, subtitle: state.placeAddress, titleColor: .white, subtitleColor: .white, coordinate: state.placeCoordinate)
+                    .padding()
+            }
+
+            HStack(spacing: 40) {
+                if let webUrl = state.webUrl {
+                    CircleButton(icon: "globe", url: webUrl)
                 }
 
-                Text("Location")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.horizontal)
+                if let emailScheme = state.emailScheme {
+                    CircleButton(icon: "envelope", url: emailScheme)
+                }
 
-                MapView(coordinate: state.placeCoordinate)
-                    .frame(height: 300)
-                    .cornerRadius(20)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray.opacity(0.2), lineWidth: 1))
-                    .padding(.horizontal)
-
-                Spacer()
+                if let phoneScheme = state.phoneScheme {
+                    CircleButton(icon: "phone", url: phoneScheme)
+                }
             }
+
+            if let coordinate = state.placeCoordinate {
+                MapView(coordinate: coordinate)
+                    .frame(height: 250)
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+            }
+
+            Spacer()
         }
         .edgesIgnoringSafeArea(.top)
         .navigationBarBackButtonHidden(true)
@@ -67,6 +79,6 @@ struct PlaceDetailScene: View {
 
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceDetailScene(state: PlaceDetailViewState(place: Places.mock.features[0]))
+        PlaceDetailScene(state: PlaceDetailViewState(place: Places.mock.places[0]))
     }
 }
