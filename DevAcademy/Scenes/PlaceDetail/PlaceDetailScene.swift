@@ -13,7 +13,7 @@ struct PlaceDetailScene: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            AsyncImage(url: state.placeImageUrl) { image in
+            StoredAsyncImage(url: state.placeImageUrl!) { image in
                 image
                     .resizable()
                     .frame(height: 300)
@@ -25,7 +25,6 @@ struct PlaceDetailScene: View {
                     .frame(height: 300)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .shadow(radius: 4)
-
             }.overlay {
                 LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0), Color.black.opacity(0.85)]),
                                startPoint: .top,
@@ -56,6 +55,18 @@ struct PlaceDetailScene: View {
                     .padding(.horizontal)
             }
 
+            Button {
+                state.isFavourite.wrappedValue.toggle()
+            } label: {
+                HStack {
+                    Image(systemName: state.isFavourite.wrappedValue ? "heart.fill" : "heart")
+                        .imageScale(.large)
+                        .foregroundColor(.red)
+
+                    Text(state.isFavourite.wrappedValue ? "Remove from favourite" : "Add to favourite")
+                }
+            }
+
             Spacer()
         }
         .edgesIgnoringSafeArea(.top)
@@ -80,5 +91,6 @@ struct PlaceDetailScene: View {
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
         PlaceDetailScene(state: PlaceDetailViewState(place: Places.mock.places[0]))
+            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService()))
     }
 }

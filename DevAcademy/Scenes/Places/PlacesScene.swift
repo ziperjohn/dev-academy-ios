@@ -35,7 +35,8 @@ struct PlacesScene: View {
                 Button {
                     state.toggleShowFavorite()
                 } label: {
-                    Image(systemName: "heart.fill").font(.headline)
+                    Image(systemName: "heart.fill")
+                        .imageScale(.large)
                 }
             }
         }
