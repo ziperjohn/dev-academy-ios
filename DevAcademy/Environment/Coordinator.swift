@@ -12,10 +12,10 @@ class Coordinator: ObservableObject {
         PlacesScene()
     }
 
-    var favoritesScene: some View {
-        Text("Nic tu není")
+    func favoritesScene(with favouritePlaces: [Place]) -> some View {
+        FavouritePlacesScene(favouritePlaces: favouritePlaces)
             .presentationDetents([.medium, .large])
-            .presentationDragIndicator(.visible)
+            .presentationDragIndicator(.hidden)
     }
 
     func placeDetailScene(with place: Place) -> some View {
