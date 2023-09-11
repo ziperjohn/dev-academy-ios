@@ -11,7 +11,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService()))
+            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService(), userLocationService: ProductionUserLocationService()))
             .environmentObject(Coordinator())
     }
 }

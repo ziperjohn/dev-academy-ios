@@ -13,9 +13,7 @@ struct PlaceTitleSubtitleDistance: View {
     let subtitle: String
     let titleColor: Color
     let subtitleColor: Color
-    let coordinate: CLLocationCoordinate2D?
-
-    // TODO: Calculate distance from coordinate
+    let distance: String?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -27,12 +25,12 @@ struct PlaceTitleSubtitleDistance: View {
             HStack {
                 Text(subtitle)
 
-                if coordinate != nil {
+                if let distance {
                     Spacer()
 
                     HStack {
                         Image(systemName: "location.fill")
-                        Text("1,8 km")
+                        Text(distance)
                     }
                 }
             }
@@ -44,6 +42,6 @@ struct PlaceTitleSubtitleDistance: View {
 
 struct PlaceTitleSubtitleDistance_Previews: PreviewProvider {
     static var previews: some View {
-        PlaceTitleSubtitleDistance(title: Places.mock.places[0].properties.name, subtitle: Places.mock.places[0].properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, coordinate: CLLocationCoordinate2D())
+        PlaceTitleSubtitleDistance(title: Places.mock.places[0].properties.name, subtitle: Places.mock.places[0].properties.kind.rawValue, titleColor: .black, subtitleColor: .secondary, distance: "550 m")
     }
 }

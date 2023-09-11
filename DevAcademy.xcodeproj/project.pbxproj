@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		1E11D9EF2A8E668E0027D6F5 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E11D9EE2A8E668E0027D6F5 /* PlaceMarker.swift */; };
 		1E11D9F12A8E98B60027D6F5 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E11D9F02A8E98B60027D6F5 /* CircleButton.swift */; };
+		1E23A9642AA75D36001D5295 /* UserLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E23A9632AA75D36001D5295 /* UserLocationService.swift */; };
 		1E2C71322A82825100859849 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C71312A82825100859849 /* Coordinator.swift */; };
 		1E2C71372A82A1C800859849 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C71362A82A1C800859849 /* Coordinate.swift */; };
 		1E2C71392A82A1E500859849 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2C71382A82A1E500859849 /* MapView.swift */; };
+		1E3FBB5F2AAEEA9000D053AB /* FavouritePlacesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3FBB5E2AAEEA9000D053AB /* FavouritePlacesScene.swift */; };
 		1EA891EB2A70023300775195 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EA2A70023300775195 /* Properties.swift */; };
 		1EA891ED2A70024900775195 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EC2A70024900775195 /* Kind.swift */; };
 		1EA891EF2A70025F00775195 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA891EE2A70025F00775195 /* Point.swift */; };
@@ -37,9 +39,11 @@
 /* Begin PBXFileReference section */
 		1E11D9EE2A8E668E0027D6F5 /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		1E11D9F02A8E98B60027D6F5 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		1E23A9632AA75D36001D5295 /* UserLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationService.swift; sourceTree = "<group>"; };
 		1E2C71312A82825100859849 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1E2C71362A82A1C800859849 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		1E2C71382A82A1E500859849 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1E3FBB5E2AAEEA9000D053AB /* FavouritePlacesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesScene.swift; sourceTree = "<group>"; };
 		1EA891EA2A70023300775195 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		1EA891EC2A70024900775195 /* Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
 		1EA891EE2A70025F00775195 /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				1EE606612A8BB9E300B87DBA /* PlacesService.swift */,
+				1E23A9632AA75D36001D5295 /* UserLocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				1EA891F42A70035300775195 /* PlacesScene.swift */,
 				1EA891F62A7004DD00775195 /* PlacesRow.swift */,
 				1ECF329A2A82751B008AF871 /* PlacesStateView.swift */,
+				1E3FBB5E2AAEEA9000D053AB /* FavouritePlacesScene.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E11D9F12A8E98B60027D6F5 /* CircleButton.swift in Sources */,
+				1E23A9642AA75D36001D5295 /* UserLocationService.swift in Sources */,
 				1EA891FB2A7013FD00775195 /* Place.swift in Sources */,
 				1ECF32992A8274B9008AF871 /* PlaceDetailViewState.swift in Sources */,
 				1EA891F72A7004DD00775195 /* PlacesRow.swift in Sources */,
@@ -284,6 +291,7 @@
 				1EE606622A8BB9E300B87DBA /* PlacesService.swift in Sources */,
 				1E2C71322A82825100859849 /* Coordinator.swift in Sources */,
 				1EA891EF2A70025F00775195 /* Point.swift in Sources */,
+				1E3FBB5F2AAEEA9000D053AB /* FavouritePlacesScene.swift in Sources */,
 				1EE431802A9E26F0004E1DB7 /* ImageStorage.swift in Sources */,
 				1ECF329E2A827CB0008AF871 /* PlacesObservableObject.swift in Sources */,
 				1E11D9EF2A8E668E0027D6F5 /* PlaceMarker.swift in Sources */,
@@ -422,6 +430,7 @@
 				DEVELOPMENT_TEAM = U6U6MSV7P2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs access to location when open, to view your location on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -455,6 +464,7 @@
 				DEVELOPMENT_TEAM = U6U6MSV7P2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs access to location when open, to view your location on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

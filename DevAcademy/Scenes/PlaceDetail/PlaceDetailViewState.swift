@@ -24,6 +24,25 @@ struct PlaceDetailViewState: DynamicProperty {
         }
     }
 
+    var distance: String? {
+        if let location = place.geometry?.clLocation {
+            let distance = placesObject.getDistance(placeLocation: location)
+
+            if let distance {
+                if distance > 1000 {
+                    let kilometers = distance / 1000
+                    return "\(String(format: "%.1f", kilometers)) km"
+                } else {
+                    return "\(Int(distance)) m"
+                }
+            }
+
+            return nil
+        }
+
+        return nil
+    }
+
     var placeTitle: String {
         place.properties.name
     }

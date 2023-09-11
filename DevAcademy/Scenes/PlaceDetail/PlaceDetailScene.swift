@@ -13,7 +13,7 @@ struct PlaceDetailScene: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            StoredAsyncImage(url: state.placeImageUrl!) { image in
+            StoredAsyncImage(url: state.placeImageUrl) { image in
                 image
                     .resizable()
                     .frame(height: 300)
@@ -30,7 +30,7 @@ struct PlaceDetailScene: View {
                                startPoint: .top,
                                endPoint: .bottom).cornerRadius(20)
             }.overlay(alignment: .bottomLeading) {
-                PlaceTitleSubtitleDistance(title: state.placeTitle, subtitle: state.placeAddress, titleColor: .white, subtitleColor: .white, coordinate: state.placeCoordinate)
+                PlaceTitleSubtitleDistance(title: state.placeTitle, subtitle: state.placeAddress, titleColor: .white, subtitleColor: .white, distance: state.distance)
                     .padding()
             }
 
@@ -91,6 +91,6 @@ struct PlaceDetailScene: View {
 struct PlaceDetail_Previews: PreviewProvider {
     static var previews: some View {
         PlaceDetailScene(state: PlaceDetailViewState(place: Places.mock.places[0]))
-            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService()))
+            .environmentObject(PlacesObservableObject(placesService: ProductionPlacesService(), userLocationService: ProductionUserLocationService()))
     }
 }

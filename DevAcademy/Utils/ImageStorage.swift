@@ -74,18 +74,18 @@ class ImageStorage {
     /// - Parameters:
     ///   - image: Image to be stored
     ///   - url: The URL that was executed upon the server to get this image.
-    func update(image: UIImage, at url: URL) throws {
+    func update(image: UIImage, at url: URL) {
         let hash = hash(of: url)
 
         let fileUrl = defaultPath.appendingPathComponent(hash)
 
         if FileManager.default.fileExists(atPath: fileUrl.path(percentEncoded: false)) {
-            try FileManager.default.removeItem(at: fileUrl)
+            try? FileManager.default.removeItem(at: fileUrl)
         }
 
         guard let bytes = image.jpegData(compressionQuality: 1.0) else { return }
 
-        try bytes.write(to: fileUrl)
+        try? bytes.write(to: fileUrl)
 
         // HINT: UIImage -> Data
         // guard let bytes = image.jpegData(compressionQuality: 1.0) else { return }
@@ -99,21 +99,23 @@ enum StoredAsyncImageError: Error {
 struct StoredAsyncImage<I: View, P: View>: View {
     @State private var image: Image?
 
-    private let url: URL
+    private let url: URL?
     private let imageBuilder: (Image) -> I
     private let placeholderBuilder: () -> P
 
-    init(url: URL, image: @escaping (Image) -> I, placeholder: @escaping () -> P) {
+    init(url: URL?, image: @escaping (Image) -> I, placeholder: @escaping () -> P) {
         self.url = url
         self.imageBuilder = image
         self.placeholderBuilder = placeholder
     }
 
-    private func performURLFetch() async throws -> (UIImage, Image) {
+    private func performURLFetch(url: URL) async throws -> (UIImage, Image) {
         let (data, _) = try await URLSession.shared.data(from: url)
+
         guard let uiimage = UIImage(data: data) else {
             throw StoredAsyncImageError.decodingFailed
         }
+
         let image = Image(uiImage: uiimage)
 
         return (uiimage, image)
@@ -123,16 +125,25 @@ struct StoredAsyncImage<I: View, P: View>: View {
     ///
     /// If so, store it in `image` state variable.
     /// If not, download the image via `performURLFetch()` function, store it in the cache and in the `image` state vriable.
-    private func loadImage() async throws {
-        let image = ImageStorage.shared.loadImage(for: url)
+    private func loadImage() async {
+        guard let url else { return }
 
-        if let img = image {
-            self.image = img
-        } else {
-            let result = try await performURLFetch()
-            self.image = result.1
+        if let image = ImageStorage.shared.loadImage(for: url) {
+            self.image = image
+            return
+        }
 
-            try ImageStorage.shared.update(image: result.0, at: url)
+        do {
+            let (uiimage, image) = try await performURLFetch(url: url)
+            ImageStorage.shared.update(image: uiimage, at: url)
+            self.image = image
+        } catch {
+            switch error {
+            case _ where (error as NSError).code == NSURLErrorCancelled:
+                break
+            default:
+                print("Unrecognized error: \(error)")
+            }
         }
     }
 
@@ -141,15 +152,11 @@ struct StoredAsyncImage<I: View, P: View>: View {
     /// If `image` state variable is filled, present image using `imageBuilder`
     /// If `image` state variable is empty, present `placeholder` and execute `loadImage()` function in the `.task` modifier.
     var body: some View {
-        if let img = image {
-            imageBuilder(img)
+        if let image {
+            imageBuilder(image)
         } else {
             placeholderBuilder().task {
-                do {
-                    try await loadImage()
-                } catch {
-                    print(error)
-                }
+                await loadImage()
             }
         }
     }
